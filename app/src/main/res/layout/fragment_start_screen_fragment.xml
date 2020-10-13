@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartScreenFragment">
+    tools:context=".ui.StartScreenFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -17,10 +17,10 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonStartScreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
