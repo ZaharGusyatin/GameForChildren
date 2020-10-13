@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.fragment_start_screen_fragment.*
 
 class StartScreenFragment : Fragment(R.layout.fragment_start_screen_fragment){
 
-
+private lateinit var test:String
 
     override fun onResume() {
         super.onResume()
