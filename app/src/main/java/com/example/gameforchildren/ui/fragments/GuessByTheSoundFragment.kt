@@ -1,29 +1,30 @@
 package com.example.gameforchildren.ui.fragments
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.media.MediaPlayer
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.example.gameforchildren.MainActivity
 import com.example.gameforchildren.R
-import com.example.gameforchildren.databinding.ActivityMainBinding
 import com.example.gameforchildren.utilits.APP_ACTIVITY
 import com.example.gameforchildren.utilits.Array
 import com.example.gameforchildren.utilits.replaceFragment
 import kotlinx.android.synthetic.main.fragment_guess_by_the_sound.*
-import kotlinx.android.synthetic.main.fragment_start_screen_fragment.*
 import java.util.*
 
+
 class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
-    val random = Random()
+    private val random = Random()
     var imageTop = 0
     var count = 0
-    val progress = intArrayOf(
+    var imageDown = 0
+    private var topOrBot = 0
+    private val array = Array()
+    private lateinit var mediaPlayer: MediaPlayer
+    private val progress = intArrayOf(
         R.id.point1,
         R.id.point2,
         R.id.point3,
@@ -45,47 +46,46 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
         R.id.point19,
         R.id.point20
     )
-    var imageDown = 0
-    val b=random.nextInt(2)
-    val array = Array()
-    private lateinit var mediaPlayer: MediaPlayer
+
     override fun onResume() {
         super.onResume()
-
-
-
+        backToMenu.setOnClickListener {
+           /* replaceFragment(LevelSelectionFragment(), false) обратно в меню   */
+        }
         go.setOnClickListener {
             visibility()
             randomStart()
-            mediaPlayer.start()
-            //рандом вкл
+
+
         }
 
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun randomStart() {
-        if (b==0) {
+        topOrBot = random.nextInt(2)
+        Log.i("HEEEEREEEEE", topOrBot.toString())
+        if (topOrBot == 0) {
             imageTop = random.nextInt(2)
-            imageViewTop.setImageResource(array.picture[imageTop])
-            mediaPlayer = MediaPlayer.create(APP_ACTIVITY, array.sounds[imageTop])
+            imageViewTop.setImageResource(array.picture[imageTop])//0
+            mediaPlayer = MediaPlayer.create(APP_ACTIVITY, array.sounds[imageTop])//0
             mediaPlayer.start()
-            imageDown = random.nextInt(2)
-            while (imageTop == imageDown) {
+            imageDown = random.nextInt(2)//1
+            while (imageDown == imageTop) {
                 imageDown = random.nextInt(2) //от 0 до 9 рандом
             }
             imageViewDown.setImageResource(array.picture[imageDown])
             funPoints()
-        }else{
-            imageDown = random.nextInt(2)
-            imageViewDown.setImageResource(array.picture[imageDown])
-            mediaPlayer = MediaPlayer.create(APP_ACTIVITY, array.sounds[imageDown])
+        } else {
+            imageDown = random.nextInt(2)//1
+            imageViewDown.setImageResource(array.picture[imageDown])//1
+            mediaPlayer = MediaPlayer.create(APP_ACTIVITY, array.sounds[imageDown])//1
             mediaPlayer.start()
-            imageTop = random.nextInt(2)
+            imageTop = random.nextInt(2)//0
             while (imageTop == imageDown) {
                 imageTop = random.nextInt(2) //от 0 до 9 рандом
             }
-            imageViewTop.setImageResource(array.picture[imageTop])
+            imageViewTop.setImageResource(array.picture[imageTop])//0
             funPoints()
         }
 
@@ -93,60 +93,118 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun funPoints() {
-        imageViewTop.setOnTouchListener(View.OnTouchListener { v, event ->
-           mediaPlayer.stop()
+        imageViewTop.setOnTouchListener { v, event ->
+            mediaPlayer.stop()
             if (event.action == MotionEvent.ACTION_DOWN) { //коснулся начало
                 imageViewDown.isEnabled = false
-                if (b==0) {
-                 /*   imageViewTop.setImageResource(R.drawable.img_true)*/
+                if (topOrBot == 0) {
+
+                    imageViewTop.setImageResource(R.drawable.true_photo)
                 } else {
-                  /*  imageViewTop.setImageResource(R.drawable.img_wrong)*/
+                    imageViewTop.setImageResource(R.drawable.false_photo)
                 }
             } else if (event.action == MotionEvent.ACTION_UP) { //отпустил
-                if (b==0) {
+                if (topOrBot == 0) {
                     if (count < 20) {
                         count += 1
                     }
-                   /* for (b in 0..19) {
-                        val qwe = findViewById<TextView>(progress[b])
+
+                    for (b in 0..19) {
+                        var qwe = (context as MainActivity?)!!.findViewById<TextView>(progress[b])
                         qwe.setBackgroundResource(R.drawable.btn_games1_2)
                     }
                     for (b in 0 until count) {
-                        val qwe = findViewById<TextView>(progress[b])
+                        var qwe = (context as MainActivity?)!!.findViewById<TextView>(progress[b])
                         qwe.setBackgroundResource(R.drawable.points_for_games)
-                    }*/
-                } else { //если 1
-                    if (count > 0) { // больше нкля
+                    }
+                } else {
+                    if (count > 0) {
                         count = if (count == 1) {
                             0
                         } else {
                             count - 2
                         }
                     }
-                  /*  for (b in 0..18) {
-                        val qwe = findViewById<TextView>(progress[b])
+                    for (b in 0..18) {
+                        var qwe = (context as MainActivity?)!!.findViewById<TextView>(progress[b])
                         qwe.setBackgroundResource(R.drawable.btn_games1_2)
                     }
                     for (b in 0 until count) {
-                        val qwe = findViewById<TextView>(progress[b])
+                        var qwe = (context as MainActivity?)!!.findViewById<TextView>(progress[b])
                         qwe.setBackgroundResource(R.drawable.points_for_games)
-                    }*/
+                    }
                 }
                 if (count == 20) {
-                 /*   startActivity(Intent(this, Level2::class.java))
-                    finish()*/
+                    //exit here
                 } else {
-                    randomStart()
+
+
                     imageViewDown.isEnabled = true
+                    randomStart()
                 }
             }
             true
-        })
+
+        }
+        imageViewDown.setOnTouchListener { v, event ->
+            mediaPlayer.stop()
+            if (event.action == MotionEvent.ACTION_DOWN) { //коснулся начало
+                imageViewTop.isEnabled = false
+                if (topOrBot == 1) {
+                    imageViewDown.setImageResource(R.drawable.true_photo)
+                } else {
+                    imageViewDown.setImageResource(R.drawable.false_photo)
+                }
+            } else if (event.action == MotionEvent.ACTION_UP) { //отпустил
+                if (topOrBot == 1) {
+                    if (count < 20) {
+                        count += 1
+                    }
+
+                    for (b in 0..19) {
+                        var qwe = (context as MainActivity?)!!.findViewById<TextView>(progress[b])
+                        qwe.setBackgroundResource(R.drawable.btn_games1_2)
+                    }
+                    for (b in 0 until count) {
+                        var qwe = (context as MainActivity?)!!.findViewById<TextView>(progress[b])
+                        qwe.setBackgroundResource(R.drawable.points_for_games)
+                    }
+                } else {
+                    if (count > 0) {
+                        count = if (count == 1) {
+                            0
+                        } else {
+                            count - 2
+                        }
+                    }
+                    for (b in 0..18) {
+                        var qwe = (context as MainActivity?)!!.findViewById<TextView>(progress[b])
+                        qwe.setBackgroundResource(R.drawable.btn_games1_2)
+                    }
+                    for (b in 0 until count) {
+                        var qwe = (context as MainActivity?)!!.findViewById<TextView>(progress[b])
+                        qwe.setBackgroundResource(R.drawable.points_for_games)
+                    }
+                }
+                if (count == 20) {
+                    //Выход из данной игры
+                } else {
+
+
+                    imageViewTop.isEnabled = true
+                    randomStart()
+                }
+            }
+
+            true
+
+        }
     }
 
+
     private fun visibility() {
-        imageViewTop.isEnabled=true
-        imageViewDown.isEnabled=true
+        imageViewTop.isEnabled = true
+        imageViewDown.isEnabled = true
         imageViewTop.visibility = View.VISIBLE
         imageViewDown.visibility = View.VISIBLE
         go.visibility = View.INVISIBLE

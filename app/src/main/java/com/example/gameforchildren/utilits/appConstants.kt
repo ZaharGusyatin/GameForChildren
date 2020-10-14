@@ -8,7 +8,7 @@ lateinit var APP_ACTIVITY: MainActivity
 
 class Array {
     val picture = intArrayOf(
-        R.drawable.lion,
+        R.drawable.lionn,
         R.drawable.catt
     /*    R.drawable.number0,*/
     /*    R.drawable.number1,*/
