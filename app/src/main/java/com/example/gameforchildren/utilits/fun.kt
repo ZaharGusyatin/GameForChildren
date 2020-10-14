@@ -20,9 +20,3 @@ fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
     }
 
 }
-fun replaceEdibleGameFragment(fragment: Fragment){
-    APP_ACTIVITY.supportFragmentManager
-        .beginTransaction()
-        .replace(R.id.edibleGameContainer,fragment)
-        .commit()
-}

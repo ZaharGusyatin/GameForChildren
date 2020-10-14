@@ -21,13 +21,61 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_marginStart="@dimen/ediableSmallMargin"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginBottom="@dimen/EdibleGameMainMargin"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="@dimen/ediableSmallMargin"
+        app:layout_constraintTop_toBottomOf="@+id/edibleTVchoose">
+
+        <TextView
+          android:id="@+id/edibleFirstItemName"
+           android:textSize="16sp"
+            android:textColor="@color/colorFullBlack"
+            android:layout_marginTop="@dimen/ediableSmallMargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testing_string_bla_bla"
+            app:layout_constraintEnd_toEndOf="@+id/edibleImageFirstItem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edibleImageFirstItem" />
+
+        <ImageView
+
+            android:id="@+id/edibleImageFirstItem"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/kirpich"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+
+            android:id="@+id/ediableImageSecondItem"
+
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/axe"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/edibleSecondItemName"
+            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/testing_string_bla_bla"
+            android:textColor="@color/colorFullBlack"
+            android:textSize="16sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/ediableImageSecondItem"
+            app:layout_constraintTop_toBottomOf="@+id/ediableImageSecondItem" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

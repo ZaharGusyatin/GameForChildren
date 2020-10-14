@@ -18,11 +18,12 @@ fun initFood() {
 }
 
 fun getRandomFood(): List<FoodModel> {
+    if (fullListOfFood.isEmpty()) initFood()
     var secondFoodModel: FoodModel
     val firstPosition = (0..fullListOfFood.lastIndex).random()
     val firstFoodModel = fullListOfFood[firstPosition]
     fullListOfFood.removeAt(firstPosition)
-    while (true) {
+        while (true) {
         val secondPosition = (0..fullListOfFood.lastIndex).random()
         if (fullListOfFood[secondPosition].edible == !firstFoodModel.edible) {
             secondFoodModel = fullListOfFood[secondPosition]
@@ -30,6 +31,7 @@ fun getRandomFood(): List<FoodModel> {
             break
 
         }
+
     }
     return listOf(firstFoodModel, secondFoodModel)
 

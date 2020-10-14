@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="EdibleGameTitle">Съедобное-несъедобное</string>
     <string name="edibleGameMakeUrChoose">Выбери то, что можно скушать</string>
+    <string name="gameEdibleTitleOfDescription">Cъедобное-несъедобное</string>
+    <string name="testing_string_bla_bla">testing String bla bla</string>
 </resources>

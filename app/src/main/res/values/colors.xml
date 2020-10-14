@@ -6,4 +6,5 @@
     <color name = "EdibleGamebackgroundColor">#9BEC4A</color>
 <color name="white">#ffff</color>
     <color name="colorFullBlack">#000000</color>
+    <color name="color0">#00FFFFFF</color>
 </resources>
