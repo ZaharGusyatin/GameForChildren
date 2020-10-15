@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/linearLayout"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+
+    >
+
+    <ImageView
+        android:id="@+id/point1"
+        style="@style/progressBarStyle"
+        android:src="@drawable/black_star"/>
+
+    <ImageView
+        android:id="@+id/point2"
+        style="@style/progressBarStyle" />
+
+    <ImageView
+        android:id="@+id/point3"
+        style="@style/progressBarStyle" />
+
+    <ImageView
+        android:id="@+id/point4"
+        style="@style/progressBarStyle" />
+
+    <ImageView
+        android:id="@+id/point5"
+        style="@style/progressBarStyle" />
+
+    <ImageView
+        android:id="@+id/point6"
+        style="@style/progressBarStyle" />
+
+    <ImageView
+        android:id="@+id/point7"
+        style="@style/progressBarStyle" />
+
+    <ImageView
+        android:id="@+id/point8"
+        style="@style/progressBarStyle" />
+
+    <ImageView
+        android:id="@+id/point9"
+        style="@style/progressBarStyle" />
+
+    <ImageView
+        android:id="@+id/point10"
+        style="@style/progressBarStyle" />
+
+
+</LinearLayout>

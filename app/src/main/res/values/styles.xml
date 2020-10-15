@@ -8,4 +8,11 @@
     </style>
 
 
+    <style name="progressBarStyle">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:src">@drawable/black_star</item>
+         </style>
+
 </resources>

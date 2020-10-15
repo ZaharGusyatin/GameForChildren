@@ -1,5 +1,6 @@
 import android.app.AlertDialog
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
@@ -35,17 +36,21 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
             if (items[1].edible) result = true
             nextFun()
         }
+
     }
 
 
     private fun nextFun() {
+
         edibleImageFirstItem.isClickable = false
         ediableImageSecondItem.isClickable = false
-
-        if (result){
+        if (result) {
             edibleImageResult.setImageResource(R.drawable.edible_true)
-        trueCount ++}
-        else edibleImageResult.setImageResource(R.drawable.ediable_false)
+        trueCount ++
+        }
+        else{
+            edibleImageResult.setImageResource(R.drawable.ediable_false)
+        }
         edibleImageResult.visibility = View.VISIBLE
         android.os.Handler().postDelayed({resultFunc()},800)
 
@@ -56,7 +61,10 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
 
     private fun resultFunc() {
         edibleImageResult.visibility = View.GONE
-        if (count < rounds) drawNewQuest()
+        result.progressChange(count)
+        count++
+        if (count < rounds){
+                        drawNewQuest()}
         else endLevel()
     }
 
@@ -69,7 +77,6 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
             .show()
     }
     private fun drawNewQuest() {
-        count++
         edibleImageResult.visibility = View.GONE
         result = false
         items = getRandomFood()
