@@ -11,9 +11,8 @@ import androidx.fragment.app.Fragment
 import com.example.gameforchildren.activities.MainActivity
 import com.example.gameforchildren.R
 import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
-import com.example.gameforchildren.utilits.APP_ACTIVITY
+import com.example.gameforchildren.utilits.*
 import com.example.gameforchildren.utilits.Array
-import com.example.gameforchildren.utilits.replaceFragment
 import kotlinx.android.synthetic.main.fragment_guess_by_the_sound.*
 import java.util.*
 
@@ -23,22 +22,10 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
     var imageTop = 0
     var count = 0
     var imageDown = 0
-    private var topOrBot = 0
+    var topOrBot: Boolean = false
     private val array = Array()
     private lateinit var mediaPlayer: MediaPlayer
 
-    private val progress = intArrayOf(
-                R.id.point1,
-        R.id.point2,
-        R.id.point3,
-        R.id.point4,
-        R.id.point5,
-        R.id.point6,
-        R.id.point7,
-        R.id.point8,
-        R.id.point9,
-        R.id.point10
-    )
     val alfa =
         AnimationUtils.loadAnimation(APP_ACTIVITY, R.anim.alfa)
 
@@ -63,28 +50,28 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun randomStart() {
-        topOrBot = random.nextInt(2)
+        topOrBot = random.nextBoolean()
         /* Log.i("HEEEEREEEEE", topOrBot.toString())*/
-        if (topOrBot == 0) {
+        if (topOrBot) {
             imageTop = random.nextInt(2)
-            imageViewTop.setImageResource(array.picture[imageTop])//0
+            imageViewTop.setImageResource(array.picture[imageTop])
             imageViewTop.startAnimation(alfa)
-            mediaPlayer = MediaPlayer.create(APP_ACTIVITY, array.sounds[imageTop])//0
+            mediaPlayer = MediaPlayer.create(APP_ACTIVITY, array.sounds[imageTop])
             mediaPlayer.start()
-            imageDown = random.nextInt(2)//1
+            imageDown = random.nextInt(2)
             while (imageDown == imageTop) {
-                imageDown = random.nextInt(2) //от 0 до 9 рандом
+                imageDown = random.nextInt(2)
             }
             imageViewDown.setImageResource(array.picture[imageDown])
             imageViewDown.startAnimation(alfa)
             funPoints()
-        } else {
-            imageDown = random.nextInt(2)//1
-            imageViewDown.setImageResource(array.picture[imageDown])//1
+        } else {//false
+            imageDown = random.nextInt(2)
+            imageViewDown.setImageResource(array.picture[imageDown])
             imageViewDown.startAnimation(alfa)
-            mediaPlayer = MediaPlayer.create(APP_ACTIVITY, array.sounds[imageDown])//1
+            mediaPlayer = MediaPlayer.create(APP_ACTIVITY, array.sounds[imageDown])
             mediaPlayer.start()
-            imageTop = random.nextInt(2)//0
+            imageTop = random.nextInt(2)
             while (imageTop == imageDown) {
                 imageTop = random.nextInt(2) //от 0 до 9 рандом
             }
@@ -97,52 +84,25 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun funPoints() {
+        Log.i(topOrBot.toString(),"hru")
+        Log.i(imageTop.toString(),"hru")
+        Log.i(imageDown.toString(),"hru")
         imageViewTop.setOnTouchListener { v, event ->
             mediaPlayer.stop()
             if (event.action == MotionEvent.ACTION_DOWN) { //коснулся начало
                 imageViewDown.isEnabled = false
-                if (topOrBot == 0) {
+                if (topOrBot) {
 
                     imageViewTop.setImageResource(R.drawable.true_photo)
                 } else {
                     imageViewTop.setImageResource(R.drawable.false_photo)
                 }
             } else if (event.action == MotionEvent.ACTION_UP) { //отпустил
-                if (topOrBot == 0) {
-                    if (count < 20) {
-                        count += 1
-                    }
 
-                    for (b in 0..19) {
-                        var qwe =
-                            (context as MainActivity?)!!.findViewById<TextView>(array.progress[b])
-                        qwe.setBackgroundResource(R.drawable.btn_games1_2)
-                    }
-                    for (b in 0 until count) {
-                        var qwe =
-                            (context as MainActivity?)!!.findViewById<TextView>(array.progress[b])
-                        qwe.setBackgroundResource(R.drawable.points_for_games)
-                    }
-                } else {
-                    if (count > 0) {
-                        count = if (count == 1) {
-                            0
-                        } else {
-                            count - 2
-                        }
-                    }
-                    for (b in 0..18) {
-                        var qwe =
-                            (context as MainActivity?)!!.findViewById<TextView>(array.progress[b])
-                        qwe.setBackgroundResource(R.drawable.btn_games1_2)
-                    }
-                    for (b in 0 until count) {
-                        var qwe =
-                            (context as MainActivity?)!!.findViewById<TextView>(array.progress[b])
-                        qwe.setBackgroundResource(R.drawable.points_for_games)
-                    }
-                }
-                if (count == 20) {
+                topOrBot.progressChange(count)
+                count += 1
+
+                if (count == 10) {
                     mediaPlayer.stop()
                     replaceFragment(LevelSelectionFragment(), false)
                 } else {
@@ -159,47 +119,17 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
             mediaPlayer.stop()
             if (event.action == MotionEvent.ACTION_DOWN) { //коснулся начало
                 imageViewTop.isEnabled = false
-                if (topOrBot == 1) {
+                if (!topOrBot) {
                     imageViewDown.setImageResource(R.drawable.true_photo)
                 } else {
                     imageViewDown.setImageResource(R.drawable.false_photo)
                 }
             } else if (event.action == MotionEvent.ACTION_UP) { //отпустил
-                if (topOrBot == 1) {
-                    if (count < 20) {
-                        count += 1
-                    }
 
-                    for (b in 0..19) {
-                        var qwe =
-                            (context as MainActivity?)!!.findViewById<TextView>(array.progress[b])
-                        qwe.setBackgroundResource(R.drawable.btn_games1_2)
-                    }
-                    for (b in 0 until count) {
-                        var qwe =
-                            (context as MainActivity?)!!.findViewById<TextView>(array.progress[b])
-                        qwe.setBackgroundResource(R.drawable.points_for_games)
-                    }
-                } else {
-                    if (count > 0) {
-                        count = if (count == 1) {
-                            0
-                        } else {
-                            count - 2
-                        }
-                    }
-                    for (b in 0..18) {
-                        var qwe =
-                            (context as MainActivity?)!!.findViewById<TextView>(array.progress[b])
-                        qwe.setBackgroundResource(R.drawable.btn_games1_2)
-                    }
-                    for (b in 0 until count) {
-                        var qwe =
-                            (context as MainActivity?)!!.findViewById<TextView>(array.progress[b])
-                        qwe.setBackgroundResource(R.drawable.points_for_games)
-                    }
-                }
-                if (count == 20) {
+                topOrBot.progressChange(count)
+                count += 1
+
+                if (count == 10) {
                     mediaPlayer.stop()
                     replaceFragment(LevelSelectionFragment(), false)
                 } else {
