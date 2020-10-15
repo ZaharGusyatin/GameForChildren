@@ -1,4 +1,4 @@
-package com.example.gameforchildren.ui.fragments
+package com.example.gameforchildren.ui.fragments.guessByTheSound
 
 import android.annotation.SuppressLint
 import android.media.MediaPlayer
@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.MainActivity
 import com.example.gameforchildren.R
+import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
 import com.example.gameforchildren.utilits.APP_ACTIVITY
 import com.example.gameforchildren.utilits.Array
 import com.example.gameforchildren.utilits.replaceFragment
@@ -50,8 +51,10 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
     override fun onResume() {
         super.onResume()
         backToMenu.setOnClickListener {
-           /* replaceFragment(LevelSelectionFragment(), false) обратно в меню   */
+           replaceFragment(LevelSelectionFragment(), false)
+            mediaPlayer.stop()
         }
+        APP_ACTIVITY.title = getString(R.string.music)
         go.setOnClickListener {
             visibility()
             randomStart()

@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
         APP_ACTIVITY = this
-        //replaceFragment(StartScreenFragment(), false)
-replaceFragment(EdibleGameMainFragment())
+        replaceFragment(StartScreenFragment(), false)
+
 
     }
 
