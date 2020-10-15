@@ -1,7 +1,9 @@
 package com.example.gameforchildren.utilits
 
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
+import java.util.logging.Handler
 
 fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
     if (addStack) {
@@ -19,4 +21,10 @@ fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
             ).commit()
     }
 
+
 }
+ fun showToast(message: String) {
+    Toast.makeText(APP_ACTIVITY, message, Toast.LENGTH_SHORT).show()
+}
+
+

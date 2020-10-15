@@ -16,7 +16,7 @@ class EdibleGameMainFragment : Fragment(R.layout.fragment_edible_game_main){
     override fun onResume() {
         super.onResume()
         edibleButtonStart.setOnClickListener {
-            replaceFragment(EdibleGameQuestionFragment())
+            replaceFragment(EdibleGameQuestionFragment(), false)
        }
     }
 }
