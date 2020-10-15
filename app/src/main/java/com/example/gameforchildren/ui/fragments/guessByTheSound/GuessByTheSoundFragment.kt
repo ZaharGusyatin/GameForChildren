@@ -20,6 +20,7 @@ import java.util.*
 class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
     private val random = Random()
     var imageTop = 0
+    var qwe = 0;
     var count = 0
     var imageDown = 0
     var topOrBot: Boolean = false
@@ -84,9 +85,9 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
 
     @SuppressLint("ClickableViewAccessibility")
     private fun funPoints() {
-        Log.i(topOrBot.toString(),"hru")
-        Log.i(imageTop.toString(),"hru")
-        Log.i(imageDown.toString(),"hru")
+        Log.i(topOrBot.toString(), "hru")
+        Log.i(imageTop.toString(), "hru")
+        Log.i(imageDown.toString(), "hru")
         imageViewTop.setOnTouchListener { v, event ->
             mediaPlayer.stop()
             if (event.action == MotionEvent.ACTION_DOWN) { //коснулся начало
@@ -121,12 +122,20 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
                 imageViewTop.isEnabled = false
                 if (!topOrBot) {
                     imageViewDown.setImageResource(R.drawable.true_photo)
+                    qwe = 0
                 } else {
                     imageViewDown.setImageResource(R.drawable.false_photo)
+                    qwe = 1
                 }
             } else if (event.action == MotionEvent.ACTION_UP) { //отпустил
-
-                topOrBot.progressChange(count)
+                if (qwe == 0) {
+                    topOrBot = true
+                    topOrBot.progressChange(count)
+                } else {
+                    topOrBot=false
+                    topOrBot.progressChange(count)
+                }
+                //тут проблема
                 count += 1
 
                 if (count == 10) {
