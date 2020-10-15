@@ -23,7 +23,8 @@ fun getRandomFood(): List<FoodModel> {
     val firstPosition = (0..fullListOfFood.lastIndex).random()
     val firstFoodModel = fullListOfFood[firstPosition]
     fullListOfFood.removeAt(firstPosition)
-        while (true) {
+    if (fullListOfFood.isEmpty()) initFood()
+    while (true) {
         val secondPosition = (0..fullListOfFood.lastIndex).random()
         if (fullListOfFood[secondPosition].edible == !firstFoodModel.edible) {
             secondFoodModel = fullListOfFood[secondPosition]
