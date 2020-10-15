@@ -1,6 +1,4 @@
 import android.app.AlertDialog
-import android.content.DialogInterface
-import android.text.method.DialerKeyListener
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -8,8 +6,12 @@ import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
 import com.example.gameforchildren.model.FoodModel
 import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
-import com.example.gameforchildren.utilits.*
+import com.example.gameforchildren.utilits.APP_ACTIVITY
+import com.example.gameforchildren.utilits.getRandomFood
+import com.example.gameforchildren.utilits.initFood
+import com.example.gameforchildren.utilits.replaceFragment
 import kotlinx.android.synthetic.main.fragment_edible_game_question.*
+
 
 class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_question) {
     var trueCount = 0
@@ -19,6 +21,10 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
     lateinit var items: List<FoodModel>
     override fun onResume() {
         super.onResume()
+        button_back_to_menu_from_edible.setOnClickListener {
+            replaceFragment(LevelSelectionFragment(),false)
+        }
+
         APP_ACTIVITY.title = getString(R.string.EdibleGameTitle)
         initFood()
         drawNewQuest()
@@ -32,6 +38,7 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
         }
 
     }
+
 
     private fun nextFun() {
 
@@ -49,6 +56,8 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
 
 
     }
+
+
 
     private fun resultFunc() {
         edibleImageResult.visibility = View.GONE

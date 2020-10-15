@@ -1,10 +1,14 @@
 package com.example.gameforchildren.utilits
 
+
 import android.app.Activity
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
+
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
+import java.util.logging.Handler
 
 fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
     if (addStack) {
@@ -22,6 +26,10 @@ fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
             ).commit()
     }
 
+
+}
+ fun showToast(message: String) {
+    Toast.makeText(APP_ACTIVITY, message, Toast.LENGTH_SHORT).show()
 }
 fun Boolean.progressChange(count:Int){
     if (this) APP_ACTIVITY.findViewById<ImageView>(progressBarArray[count])?.setImageResource(R.drawable.star)
