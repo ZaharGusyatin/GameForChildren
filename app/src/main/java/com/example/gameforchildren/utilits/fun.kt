@@ -1,7 +1,6 @@
 package com.example.gameforchildren.utilits
 
 
-import android.app.Activity
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast

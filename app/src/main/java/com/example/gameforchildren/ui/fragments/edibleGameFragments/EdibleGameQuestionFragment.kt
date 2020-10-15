@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
 import com.example.gameforchildren.model.FoodModel
 import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
-import com.example.gameforchildren.utilits.APP_ACTIVITY
-import com.example.gameforchildren.utilits.getRandomFood
-import com.example.gameforchildren.utilits.initFood
-import com.example.gameforchildren.utilits.replaceFragment
+import com.example.gameforchildren.utilits.*
 import kotlinx.android.synthetic.main.fragment_edible_game_question.*
 
 
