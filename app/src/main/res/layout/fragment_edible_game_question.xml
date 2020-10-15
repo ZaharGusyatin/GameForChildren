@@ -7,19 +7,22 @@
     android:background="@drawable/ediable_game_back_for_question"
     tools:context=".ui.fragments.edibleGameFragments.EdibleGameQuestionFragment">
 
+    <include layout="@layout/progress_bar"
+        android:id="@+id/progress_bar2"/>
 
     <TextView
         android:id="@+id/edibleTVchoose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/ediableGameChooseFragmentTopMargin"
+        android:layout_marginTop="@dimen/EdibleGameMainMargin"
         android:text="@string/edibleGameMakeUrChoose"
         android:textColor="@color/colorFullBlack"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/progress_bar2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginStart="@dimen/ediableSmallMargin"
@@ -80,7 +83,7 @@
             app:layout_constraintTop_toBottomOf="@+id/ediableImageSecondItem" />
 
         <ImageView
-            android:visibility="gone"
+
 
             android:id="@+id/edibleImageResult"
             android:src="@drawable/edible_true"
@@ -90,6 +93,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,3 +26,15 @@ class Array {
         R.raw.cat
     )
 }
+val progressBarArray = intArrayOf(
+    R.id.point1,
+    R.id.point2,
+    R.id.point3,
+    R.id.point4,
+    R.id.point5,
+    R.id.point6,
+    R.id.point7,
+    R.id.point8,
+    R.id.point9,
+    R.id.point10
+)
