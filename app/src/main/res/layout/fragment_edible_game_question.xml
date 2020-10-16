@@ -49,19 +49,20 @@
             app:layout_constraintTop_toBottomOf="@+id/edibleImageFirstItem" />
 
         <ImageView
-
+android:clickable="true"
             android:id="@+id/edibleImageFirstItem"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:src="@drawable/kirpich"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:focusable="true" />
 
         <ImageView
 
             android:id="@+id/ediableImageSecondItem"
-
+android:clickable="true"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:src="@drawable/axe"
