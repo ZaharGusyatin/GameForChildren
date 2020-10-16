@@ -3,12 +3,20 @@ package com.example.gameforchildren.utilits
 
 import EdibleGameQuestionFragment
 import android.app.AlertDialog
+
+import android.media.MediaPlayer
+import android.view.View
+
 import android.widget.ImageView
 import android.widget.Toast
-
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+
 import com.example.gameforchildren.R
+
 import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
+
+
 
 fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
     if (addStack) {
@@ -28,13 +36,17 @@ fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
 
 
 }
- fun showToast(message: String) {
+
+
+
+fun showToast(message: String) {
     Toast.makeText(APP_ACTIVITY, message, Toast.LENGTH_SHORT).show()
 }
 fun Boolean.progressChange(count:Int){
     if (this) APP_ACTIVITY.findViewById<ImageView>(progressBarArray[count])?.setImageResource(R.drawable.star)
     else APP_ACTIVITY.findViewById<ImageView>(progressBarArray[count])?.setImageResource(R.drawable.skull)
 }
+ ChooseOnTouchUpdate
 
  fun endLevel(trueCount: Int, rounds: Int) {
     val builder = AlertDialog.Builder(APP_ACTIVITY)
@@ -52,3 +64,17 @@ fun Boolean.progressChange(count:Int){
         }
         .show()
 }
+
+fun mediaPlayerCreate(id: Int){
+    mediaPlayer = MediaPlayer.create(APP_ACTIVITY, id)
+    mediaPlayer.start()
+
+}
+
+fun visible(view: View) {
+    view.visibility = View.VISIBLE
+}
+fun invisible(view: View) {
+    view.visibility = View.INVISIBLE
+}
+
