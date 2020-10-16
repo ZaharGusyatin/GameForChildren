@@ -5,9 +5,7 @@ import com.example.gameforchildren.model.FoodModel
 import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
 import com.example.gameforchildren.utilits.*
 import kotlinx.android.synthetic.main.fragment_edible_game_question.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.util.logging.Handler
 
 
@@ -30,7 +28,15 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
             replaceFragment(LevelSelectionFragment(), false)
         }
         APP_ACTIVITY.title = getString(R.string.EdibleGameTitle)
-
+     /*   edibleImageFirstItem.setOnClickListener {
+            stopClick()
+        android.os.Handler().postDelayed({startClick()},500)
+        }
+        edibleImageFirstItem.setOnClickListener {
+            stopClick()
+            android.os.Handler().postDelayed({startClick()},500)
+        }
+*/
     }
 
     private fun resultFunc() {
@@ -45,14 +51,13 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
         }
     }
     private fun drawNewQuest() {
-                result = false
+        result = false
         items = getRandomFood()
         edibleFirstItemName.text = items[0].name
         edibleSecondItemName.text = items[1].name
         edibleImageFirstItem.setImageResource(items[0].image)
         ediableImageSecondItem.setImageResource(items[1].image)
         updateListeners()
-
     }
 
     fun updateListeners() {
@@ -67,7 +72,9 @@ class EdibleGameQuestionFragment : Fragment(R.layout.fragment_edible_game_questi
         edibleImageFirstItem.setOnTouchListener(listener1)
         ediableImageSecondItem.setOnTouchListener(listener2)
     }
-fun stopClick() { //времянка пока нет задержки
+
+
+    fun stopClick() { //времянка пока нет задержки
     ediableImageSecondItem.isClickable = false
     edibleImageFirstItem.isClickable = false
 }
