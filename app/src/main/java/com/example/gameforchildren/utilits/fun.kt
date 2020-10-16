@@ -1,13 +1,14 @@
 package com.example.gameforchildren.utilits
 
 
-import android.view.View
+import EdibleGameQuestionFragment
+import android.app.AlertDialog
 import android.widget.ImageView
 import android.widget.Toast
 
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
-import java.util.logging.Handler
+import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
 
 fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
     if (addStack) {
@@ -33,4 +34,21 @@ fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
 fun Boolean.progressChange(count:Int){
     if (this) APP_ACTIVITY.findViewById<ImageView>(progressBarArray[count])?.setImageResource(R.drawable.star)
     else APP_ACTIVITY.findViewById<ImageView>(progressBarArray[count])?.setImageResource(R.drawable.skull)
+}
+
+ fun endLevel(trueCount: Int, rounds: Int) {
+    val builder = AlertDialog.Builder(APP_ACTIVITY)
+    builder.setTitle("Игра окончена")
+        .setMessage("Вы ответили на  $trueCount из $rounds правильно. Вы молодец и бла бла бла")
+        .setPositiveButton("Начать снова") { dialogInterface, i ->
+            replaceFragment(
+                EdibleGameQuestionFragment()
+            )
+        }
+        .setNeutralButton("Вернуться к выбору игры") { dialogInterface, i ->
+            replaceFragment(
+                LevelSelectionFragment()
+            )
+        }
+        .show()
 }
