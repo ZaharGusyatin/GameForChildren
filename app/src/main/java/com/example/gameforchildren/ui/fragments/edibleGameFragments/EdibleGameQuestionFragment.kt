@@ -1,7 +1,5 @@
 import android.app.AlertDialog
 import android.view.View
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
 import com.example.gameforchildren.model.FoodModel
