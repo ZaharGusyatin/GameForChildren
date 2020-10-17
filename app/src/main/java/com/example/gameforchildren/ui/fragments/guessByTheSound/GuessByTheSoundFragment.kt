@@ -3,8 +3,6 @@ package com.example.gameforchildren.ui.fragments.guessByTheSound
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.MotionEvent
-import android.view.View
-import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
 import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
@@ -22,6 +20,7 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
     var imageDown = 0
     var topOrBot: Boolean = false
     private val array = Array()
+
 
 
     override fun onResume() {
@@ -45,26 +44,26 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
         if (topOrBot) {
             imageTop = random.nextInt(2)
             imageViewTop.setImageResource(array.picture[imageTop])
-            imageViewTop.startAnimation(alfa)
+            imageViewTop.startAnimation(animation(R.anim.alfa))
             mediaPlayerCreate(array.sounds[imageTop])
             imageDown = random.nextInt(2)
             while (imageDown == imageTop) {
                 imageDown = random.nextInt(2)
             }
             imageViewDown.setImageResource(array.picture[imageDown])
-            imageViewDown.startAnimation(alfa)
+            imageViewDown.startAnimation(animation(R.anim.alfa))
             funPoints()
         } else {
             imageDown = random.nextInt(2)
             imageViewDown.setImageResource(array.picture[imageDown])
-            imageViewDown.startAnimation(alfa)
+            imageViewDown.startAnimation(animation(R.anim.alfa))
             mediaPlayerCreate(array.sounds[imageDown])
             imageTop = random.nextInt(2)
             while (imageTop == imageDown) {
                 imageTop = random.nextInt(2)
             }
             imageViewTop.setImageResource(array.picture[imageTop])
-            imageViewTop.startAnimation(alfa)
+            imageViewTop.startAnimation(animation(R.anim.beta))
             funPoints()
         }
 

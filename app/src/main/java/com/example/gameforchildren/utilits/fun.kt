@@ -6,11 +6,12 @@ import android.app.AlertDialog
 
 import android.media.MediaPlayer
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 
 import com.example.gameforchildren.R
 
@@ -46,7 +47,7 @@ fun Boolean.progressChange(count:Int){
     if (this) APP_ACTIVITY.findViewById<ImageView>(progressBarArray[count])?.setImageResource(R.drawable.star)
     else APP_ACTIVITY.findViewById<ImageView>(progressBarArray[count])?.setImageResource(R.drawable.skull)
 }
- ChooseOnTouchUpdate
+
 
  fun endLevel(trueCount: Int, rounds: Int) {
     val builder = AlertDialog.Builder(APP_ACTIVITY)
@@ -76,5 +77,10 @@ fun visible(view: View) {
 }
 fun invisible(view: View) {
     view.visibility = View.INVISIBLE
+}
+
+fun animation(rId: Int): Animation? {
+    return AnimationUtils.loadAnimation(APP_ACTIVITY, rId)
+
 }
 

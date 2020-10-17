@@ -7,8 +7,7 @@ import com.example.gameforchildren.R
 
 lateinit var APP_ACTIVITY: MainActivity
 lateinit var mediaPlayer: MediaPlayer
-val alfa =
-    AnimationUtils.loadAnimation(APP_ACTIVITY, R.anim.alfa)
+
 
 class Array {
     val picture = intArrayOf(
