@@ -17,14 +17,13 @@ class LevelSelectionFragment : Fragment(R.layout.fragment_level_selection){
         buttonExit.setOnClickListener { APP_ACTIVITY.finish() }
 
 
-        val myAdapter = MainAdapter(items, object : MainAdapter.Callback {
-            override fun onItemClicked(item: MainItemModel) {
-                Toast.makeText(APP_ACTIVITY, "TEST: " + item.id, Toast.LENGTH_SHORT).show()
-            }
+        val myAdapter = MainAdapter(items){
+           showToast("test: ${items[it].id}")}
 
+            //override fun onItemClicked(item: MainItemModel) {
+               // Toast.makeText(APP_ACTIVITY, "TEST: " + item.id, Toast.LENGTH_SHORT).show()
+           // } })
 
-
-        })
         myRecycler.adapter = myAdapter
 
     }
