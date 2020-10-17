@@ -19,7 +19,10 @@ class LevelSelectionFragment : Fragment(R.layout.fragment_level_selection){
 
         val myAdapter = MainAdapter(items, object : MainAdapter.Callback {
             override fun onItemClicked(item: MainItemModel) {
-                Toast.makeText(APP_ACTIVITY, "TEST: " + item.id, Toast.LENGTH_SHORT).show()
+                when(item.id){
+                    1-> replaceFragment(GuessByTheSoundFragment())
+                    2-> replaceFragment(EdibleGameMainFragment())
+                }
             }
 
 

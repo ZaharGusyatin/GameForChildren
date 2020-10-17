@@ -17,28 +17,31 @@ class MainAdapter(var items: List<MainItemModel>, val callback: Callback) : Recy
 
     override fun getItemCount() = items.size
 
+
+
+
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val phone = items[position]
-        holder.imageView.setImageResource(phone.imageLevel)
-        holder.nameView.text = phone.name
+        holder.bind(items[position])
 
     }
 
     inner class MainHolder internal constructor(view: View) :
         RecyclerView.ViewHolder(view) {
-        val imageView: ImageView = view.findViewById<View>(R.id.pictureLevel) as ImageView
-        val nameView: TextView = view.findViewById<View>(R.id.nameOfLevel) as TextView
+        private val firstName = itemView.findViewById<ImageView>(R.id.pictureLevel)
+        private val lastName = itemView.findViewById<TextView>(R.id.nameOfLevel)
 
 
-    }
 
-     /*   fun bind(item: MainItemModel) {
-          firstName.setImageResource()
+
+
+        fun bind(item: MainItemModel) {
+            firstName.setImageResource(item.firstName)
             lastName.text = item.lastName
             itemView.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) callback.onItemClicked(items[adapterPosition])
             }
-        }*/
+        }
+        }
 
 
     interface Callback {

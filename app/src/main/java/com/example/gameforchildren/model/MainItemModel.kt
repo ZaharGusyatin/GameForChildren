@@ -3,7 +3,7 @@ package com.example.gameforchildren.model
 
 
 data class MainItemModel(
-        var imageLevel: Int,
-        var name: String,
-        var id: Int
+        val firstName: Int,
+        val lastName: String,
+        val id: Int
 )
