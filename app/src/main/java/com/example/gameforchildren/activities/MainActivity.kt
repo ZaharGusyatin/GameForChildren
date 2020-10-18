@@ -2,18 +2,11 @@ package com.example.gameforchildren.activities
 
 
 import android.os.Bundle
-import android.view.WindowManager
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.gameforchildren.R
-import com.example.gameforchildren.adapters.MainAdapter
 import com.example.gameforchildren.databinding.ActivityMainBinding
-import com.example.gameforchildren.model.MainItemModel
 import com.example.gameforchildren.ui.StartScreenFragment
-import com.example.gameforchildren.ui.fragments.guessByTheSound.GuessByTheSoundFragment
 import com.example.gameforchildren.utilits.APP_ACTIVITY
+import com.example.gameforchildren.utilits.MEDIA_PLAYER
 import com.example.gameforchildren.utilits.replaceFragment
-import kotlinx.android.synthetic.main.fragment_level_selection.*
 
 
 class MainActivity : BaseActivity() {
@@ -27,10 +20,9 @@ class MainActivity : BaseActivity() {
         replaceFragment(StartScreenFragment(), false)
 
 
-
     }
 
-    }
+}
 
 
 

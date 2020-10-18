@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.EndLevelFragment">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/ediableGameChooseFragmentTopMargin"
+        android:text="Ваш результат"
+        android:textColor="@color/colorFullBlack"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+       android:id="@+id/resultText"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/ediableGameChooseFragmentTopMargin"
+        android:layout_width="wrap_content"
+        android:maxWidth="300dp"
+        android:layout_height="50dp"
+        android:text="Вы ответили правильно на  6 из  10 вопросов"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:textSize="22sp"
+        android:textColor="@color/colorFullBlack"/>
+
+    <Button
+        android:id="@+id/resultFragmentBtnStartAgain"
+        android:layout_marginTop="@dimen/ediableGameChooseFragmentTopMargin"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="начать заново"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultText" />
+
+    <Button
+        android:id="@+id/resultFragmentGameBtnChooseLevel"
+        android:layout_marginTop="@dimen/ediableSmallMargin"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="вернуться к выбору уровня"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultFragmentBtnStartAgain" />
+</androidx.constraintlayout.widget.ConstraintLayout>
