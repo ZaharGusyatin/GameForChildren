@@ -1,9 +1,6 @@
 package com.example.gameforchildren.utilits
 
 
-import EdibleGameQuestionFragment
-import android.app.AlertDialog
-
 import android.media.MediaPlayer
 import android.view.View
 import android.view.animation.Animation
@@ -14,9 +11,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 import com.example.gameforchildren.R
-
-import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
-
 
 
 fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
@@ -49,38 +43,39 @@ fun Boolean.progressChange(count:Int){
 }
 
 
- fun endLevel(trueCount: Int, rounds: Int) {
-    val builder = AlertDialog.Builder(APP_ACTIVITY)
-    builder.setTitle("Игра окончена")
-        .setMessage("Вы ответили на  $trueCount из $rounds правильно. Вы молодец и бла бла бла")
-        .setPositiveButton("Начать снова") { dialogInterface, i ->
-            replaceFragment(
-                EdibleGameQuestionFragment()
-            )
-        }
-        .setNeutralButton("Вернуться к выбору игры") { dialogInterface, i ->
-            replaceFragment(
-                LevelSelectionFragment()
-            )
-        }
-        .show()
-}
-
 fun mediaPlayerCreate(id: Int){
-    mediaPlayer = MediaPlayer.create(APP_ACTIVITY, id)
-    mediaPlayer.start()
-
+    MEDIA_PLAYER = MediaPlayer.create(APP_ACTIVITY, id)
+    MEDIA_PLAYER.start()
 }
 
-fun visible(view: View) {
-    view.visibility = View.VISIBLE
-}
-fun invisible(view: View) {
-    view.visibility = View.INVISIBLE
-}
+
 
 fun animation(rId: Int): Animation? {
     return AnimationUtils.loadAnimation(APP_ACTIVITY, rId)
+}
+fun ImageView.showResult(result: Boolean) {
+      this.startAnimation(animation(R.anim.alfa))
+    if (result) {
+        this.setImageResource(R.drawable.true_photo)
+    mediaPlayerCreate(R.raw.true_click)
+    } else {
+        this.setImageResource(R.drawable.false_photo)
+        mediaPlayerCreate(R.raw.false_click)
+    }
+}
+fun clickDelay(item1: ImageView, item2: ImageView, function: () -> Unit) {
+    item1.isClickable = false
+    item2.isClickable = false
+    android.os.Handler().postDelayed({
+        item1.isClickable = true
+        item2.isClickable = true
+        function()
+    }, 700)
 
 }
-
+fun ImageView.drawQuestItem(imageId:Int) {
+    this.apply {
+        this.startAnimation(animation(R.anim.alfa))
+        this.setImageResource(imageId)
+    }
+}
