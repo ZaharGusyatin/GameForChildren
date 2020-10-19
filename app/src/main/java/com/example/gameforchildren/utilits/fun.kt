@@ -78,4 +78,9 @@ fun ImageView.drawQuestItem(imageId:Int) {
         this.startAnimation(animation(R.anim.alfa))
         this.setImageResource(imageId)
     }
+
+}
+fun MutableList<*>.makeEven(){
+    if (this.size%2 != 0)
+        this.removeAt((0..this.lastIndex).random())
 }

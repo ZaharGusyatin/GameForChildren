@@ -49,7 +49,6 @@ class GuessByTheSoundFragment : Fragment(R.layout.fragment_guess_by_the_sound) {
 
     fun InitActionActions() {
         fullListEnimals.clear()
-        initListOfEnimals()
         APP_ACTIVITY.title = getString(R.string.music)
         backToMenu.setOnClickListener {
             replaceFragment(LevelSelectionFragment(), false)

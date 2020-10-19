@@ -15,6 +15,7 @@ fun initFood() {
     for (i in 0..foodNames.lastIndex) {
         fullListOfFood.add(FoodModel(foodNames[i], foodImages[i], foodEatble[i]))
     }
+fullListOfFood.makeEven()
 }
 
 fun getRandomFood(): List<FoodModel> {
