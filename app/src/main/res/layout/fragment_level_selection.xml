@@ -4,22 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorFullBlack"
     tools:context=".ui.fragments.LevelSelectionFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myRecycler"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/levelSelectionViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layoutManager="LinearLayoutManager" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/EdibleGameMainMargin">
+
+    </androidx.viewpager2.widget.ViewPager2>
 
     <Button
         android:id="@+id/buttonExit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ХочуДомой"
+        app:layout_constraintBottom_toBottomOf="@+id/levelSelectionViewPager"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+       android:layout_marginBottom="@dimen/ediableSmallMargin"
+        android:id="@+id/worm_dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="@color/colorAccent"
+        app:dotsCornerRadius="8dp"
+        app:dotsSize="10dp"
+        app:dotsSpacing="5dp"
+        app:dotsStrokeColor="@color/EdibleGamebackgroundColor"
+        app:dotsStrokeWidth="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

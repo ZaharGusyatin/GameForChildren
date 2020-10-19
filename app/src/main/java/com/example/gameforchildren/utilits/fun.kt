@@ -11,6 +11,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 import com.example.gameforchildren.R
+import kotlinx.android.synthetic.main.timer.*
+import kotlinx.android.synthetic.main.timer.view.*
+import kotlinx.coroutines.*
 
 
 fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
@@ -83,4 +86,15 @@ fun ImageView.drawQuestItem(imageId:Int) {
 fun MutableList<*>.makeEven(){
     if (this.size%2 != 0)
         this.removeAt((0..this.lastIndex).random())
+}
+fun View.showTimer(){
+    this.visibility = View.VISIBLE
+    CoroutineScope(Dispatchers.Main).launch {
+        for (i in GAME_TIME downTo 0 step 1000){
+            timerCount.text = (i/1000).toString()
+            if (i < 6000) timerCount.setTextColor(resources.getColor(R.color.Red))
+            delay(1000)
+        }
+        cancel()
+    }
 }

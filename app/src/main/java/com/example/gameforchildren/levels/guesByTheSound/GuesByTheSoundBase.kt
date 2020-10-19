@@ -1,7 +1,9 @@
-package com.example.gameforchildren.utilits
+package com.example.gameforchildren.levels.guesByTheSound
 
 import com.example.gameforchildren.R
 import com.example.gameforchildren.model.EnimalModel
+import com.example.gameforchildren.utilits.makeEven
+
 var ENIMAL_ARRAY = EnimalArray()
 
 var fullListEnimals:MutableList<EnimalModel> = mutableListOf()
