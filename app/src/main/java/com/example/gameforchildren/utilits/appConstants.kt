@@ -7,7 +7,7 @@ import com.example.gameforchildren.model.MainItemModel
 
 lateinit var APP_ACTIVITY: MainActivity
 lateinit  var MEDIA_PLAYER: MediaPlayer
-const val GAME_TIME = 10999L
+const val GAME_TIME = 15100L
 
 
 

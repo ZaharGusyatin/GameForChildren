@@ -21,6 +21,7 @@ class EdibleGameFragment(val normal: Boolean) : Fragment(R.layout.fragment_edibl
     private var count = 0
     private var result: Boolean = false
     private lateinit var items: List<FoodModel>
+    private lateinit var job:Job
     override fun onResume() {
         super.onResume()
 
@@ -33,13 +34,9 @@ class EdibleGameFragment(val normal: Boolean) : Fragment(R.layout.fragment_edibl
     }
 
     private fun addTimer() {
-        rounds = 0
-        progress_bar2.visibility = View.GONE
-       CoroutineScope(Main).launch {
-                    delay(GAME_TIME)
-           clickDelay(ediableImageSecondItem, edibleImageFirstItem) { replaceFragment(EndLevelFragment(trueCount, rounds, EdibleGameFragment(normal))) }   }
-
-        edibleTimer.showTimer()
+       progress_bar2.visibility = View.GONE
+      job.start()
+       edibleTimer.showTimer()
 
 
     }
@@ -65,6 +62,14 @@ class EdibleGameFragment(val normal: Boolean) : Fragment(R.layout.fragment_edibl
             replaceFragment(LevelSelectionFragment(), false)
         }
         APP_ACTIVITY.title = getString(R.string.EdibleGameTitle)
+        job = CoroutineScope(IO).launch {
+            rounds = 0
+
+            delay(GAME_TIME)
+            replaceFragment(EndLevelFragment(trueCount, rounds, EdibleGameFragment(normal))) //тут баг. пока хз как фиксить
+        cancel()
+        }
+
     }
 
     private fun resultFunc() {

@@ -37,5 +37,4 @@ fun getRandomFood(): List<FoodModel> {
 
     }
     return listOf(firstFoodModel, secondFoodModel)
-
 }
