@@ -1,7 +1,8 @@
-package com.example.gameforchildren.utilits
+package com.example.gameforchildren.levels.edibleGame
 
 import com.example.gameforchildren.R
 import com.example.gameforchildren.model.FoodModel
+import com.example.gameforchildren.utilits.makeEven
 
 var fullListOfFood: MutableList<FoodModel> = mutableListOf()
 
@@ -36,5 +37,4 @@ fun getRandomFood(): List<FoodModel> {
 
     }
     return listOf(firstFoodModel, secondFoodModel)
-
 }

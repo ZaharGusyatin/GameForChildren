@@ -1,4 +1,4 @@
-package com.example.gameforchildren.ui.fragments.guessByTheSound
+package com.example.gameforchildren.levels.guesByTheSound
 
 import android.media.MediaPlayer
 import androidx.fragment.app.Fragment
@@ -7,10 +7,6 @@ import com.example.gameforchildren.ui.fragments.EndLevelFragment
 import com.example.gameforchildren.ui.fragments.LevelSelectionFragment
 import com.example.gameforchildren.utilits.*
 import kotlinx.android.synthetic.main.fragment_guess_by_the_sound.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import java.util.*
 
 

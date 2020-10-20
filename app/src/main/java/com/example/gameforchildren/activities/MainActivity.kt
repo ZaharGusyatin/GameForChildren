@@ -3,9 +3,8 @@ package com.example.gameforchildren.activities
 
 import android.os.Bundle
 import com.example.gameforchildren.databinding.ActivityMainBinding
-import com.example.gameforchildren.ui.StartScreenFragment
+import com.example.gameforchildren.ui.fragments.StartScreenFragment
 import com.example.gameforchildren.utilits.APP_ACTIVITY
-import com.example.gameforchildren.utilits.MEDIA_PLAYER
 import com.example.gameforchildren.utilits.replaceFragment
 
 

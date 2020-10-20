@@ -1,4 +1,4 @@
-package com.example.gameforchildren.ui
+package com.example.gameforchildren.ui.fragments
 
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R

@@ -7,7 +7,7 @@ import com.example.gameforchildren.model.MainItemModel
 
 lateinit var APP_ACTIVITY: MainActivity
 lateinit  var MEDIA_PLAYER: MediaPlayer
-
+const val GAME_TIME = 15100L
 
 
 
@@ -25,13 +25,13 @@ val progressBarArray = intArrayOf(
     R.id.point10
 )
 val items = listOf(
-    MainItemModel(R.drawable.true_photo, "lvl1",1),
+    MainItemModel(R.drawable.catt, "lvl1",1),
     MainItemModel(R.drawable.false_photo, "lvl2",2),
-    MainItemModel(R.drawable.true_photo, "lvl3",3),
-    MainItemModel(R.drawable.false_photo, "lvl4",4),
-    MainItemModel(R.drawable.true_photo, "lvl5",5),
-    MainItemModel(R.drawable.false_photo, "lv6",6),
-    MainItemModel(R.drawable.true_photo, "lvl7",7)
+    MainItemModel(R.drawable.lionn, "lvl3",3),
+    MainItemModel(R.drawable.kirpich, "lvl4",4),
+    MainItemModel(R.drawable.llidan, "lvl5",5),
+    MainItemModel(R.drawable.morg, "lv6",6),
+    MainItemModel(R.drawable.sobaka, "lvl7",7)
 )
 
 
