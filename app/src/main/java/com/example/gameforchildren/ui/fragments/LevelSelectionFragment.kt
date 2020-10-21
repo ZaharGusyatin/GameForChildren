@@ -3,6 +3,8 @@ package com.example.gameforchildren.ui.fragments
 import androidx.fragment.app.Fragment
 import com.example.gameforchildren.R
 import com.example.gameforchildren.adapters.MainAdapter
+import com.example.gameforchildren.levels.edibleGame.EdiableDescriptionFragment
+import com.example.gameforchildren.levels.guesByTheSound.GuesDescriptionFragment
 import com.example.gameforchildren.model.MainItemModel
 import com.example.gameforchildren.levels.guesByTheSound.GuessByTheSoundFragment
 import com.example.gameforchildren.ui.Transformers.ZoomOutPageTransformer
@@ -16,8 +18,8 @@ class LevelSelectionFragment : Fragment(R.layout.fragment_level_selection){
         val myAdapter = MainAdapter(items, object : MainAdapter.Callback {
             override fun onItemClicked(item: MainItemModel) {
                 when(item.id){
-                    1-> replaceFragment(GuessByTheSoundFragment())
-                    2-> replaceFragment(DescriptionFragment())
+                    1-> replaceFragment(GuesDescriptionFragment())
+                    2-> replaceFragment(EdiableDescriptionFragment())
                 }
             }
 
@@ -27,14 +29,8 @@ levelSelectionViewPager.setPageTransformer(ZoomOutPageTransformer()) //поче�
 worm_dots_indicator.setViewPager2(levelSelectionViewPager)
     }
 
+
 }
 
 
-/* override fun onResume() {
-        super.onResume()
-        button_level_selection_edible.setOnClickListener { replaceFragment(EdibleGameMainFragment(),false) }
-        button_guess_by_the_sounds.setOnClickListener { replaceFragment(GuessByTheSoundFragment(),false) }
-        buttonExit.setOnClickListener { APP_ACTIVITY.finish() }
-
-}*/
 

@@ -1,4 +1,4 @@
-package com.example.gameforchildren.ui.fragments
+package com.example.gameforchildren.levels.edibleGame
 
 import com.example.gameforchildren.levels.edibleGame.EdibleGameFragment
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 
 
-class DescriptionFragment : Fragment(R.layout.fragment_edible_game_main){
+class EdiableDescriptionFragment : Fragment(R.layout.fragment_edible_game_main){
     override fun onResume() {
         super.onResume()
 
