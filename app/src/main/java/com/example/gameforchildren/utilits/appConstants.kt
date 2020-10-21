@@ -3,11 +3,18 @@ package com.example.gameforchildren.utilits
 import android.media.MediaPlayer
 import com.example.gameforchildren.activities.MainActivity
 import com.example.gameforchildren.R
+import com.example.gameforchildren.model.FoodModel
 import com.example.gameforchildren.model.MainItemModel
+import java.util.*
+var RESULT: Boolean = false
+var ROUNDS = 10
+var COUNT = 0
+var TRUE_COUNT = 0
 
 lateinit var APP_ACTIVITY: MainActivity
 lateinit  var MEDIA_PLAYER: MediaPlayer
 const val GAME_TIME = 15100L
+val random = Random()
 
 
 

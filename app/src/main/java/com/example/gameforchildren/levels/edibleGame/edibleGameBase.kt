@@ -5,7 +5,7 @@ import com.example.gameforchildren.model.FoodModel
 import com.example.gameforchildren.utilits.makeEven
 
 var fullListOfFood: MutableList<FoodModel> = mutableListOf()
-
+lateinit var edibleItems: List<FoodModel>
 
 fun initFood() {
     fullListOfFood.clear()

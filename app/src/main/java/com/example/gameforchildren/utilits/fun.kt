@@ -11,9 +11,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 import com.example.gameforchildren.R
+import com.example.gameforchildren.levels.edibleGame.EdibleGameFragment
+import com.example.gameforchildren.levels.edibleGame.initFood
+import com.example.gameforchildren.levels.guesByTheSound.initListOfEnimals
+import com.example.gameforchildren.ui.fragments.EndLevelFragment
 import kotlinx.android.synthetic.main.timer.*
 import kotlinx.android.synthetic.main.timer.view.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 
 
 fun replaceFragment(fragment: Fragment, addStack: Boolean = true) {
@@ -97,4 +102,15 @@ fun View.showTimer(){
         }
         cancel()
     }
+}
+
+fun catch(function:()->Unit){
+    try{
+        function()
+    }catch(e:Exception){}
+}
+
+fun initGamesBases() = CoroutineScope(IO).launch {
+   initFood()
+    initListOfEnimals()
 }
